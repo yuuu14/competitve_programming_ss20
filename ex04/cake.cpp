@@ -27,7 +27,21 @@ void generate_test() {
     ofstream file("test.in");
 }
 
-void func() {}
+void func() {
+    ios::sync_with_stdio(false);
+    ll h, w, H, W;
+    INPUT >> h >> w;
+    vector<vector<int>> tray;
+    for (ll i = 0; i < h; ++i) {
+        vector<int> tmpv;
+        for (ll j = 0, tmp; j < w; ++j) { INPUT >> tmp; tmpv.emplace_back(tmp); }
+        tray.emplace_back(tmpv);
+    }
+    INPUT >> H >> W;
+    
+
+
+}
 
 int main() {
     /*

@@ -2,9 +2,7 @@
 
 template <class T>
 void print_vector(const std::vector<T>& v) {
-    for (T e : v) {
-        std::cout << e << " ";
-    }
+    for (T e : v) std::cout << e << " ";
     std::cout << std::endl;
 }
 
