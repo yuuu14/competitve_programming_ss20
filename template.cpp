@@ -20,20 +20,17 @@ typedef long long ll;
 
 // change to cin
 #define INPUT cin
-
-//#include "../functions.hpp"
-
+fstream file("test.in");
+/*#include "../functions.hpp"
 void generate_test() {
     ofstream file("test.in");
-}
+}*/
 
 void func() {}
 
 int main() {
-    /*
-    generate_test();
-    fstream file("test.in");
-    */
+
+    //generate_test();
 
     auto start = chrono::high_resolution_clock::now();
     func();
