@@ -40,22 +40,7 @@ void generate_test() {
     } 
 }*/
 
-
-vector<vector<ll>> a;
-vector<int> it;
-
-void bfs(ll hd, ll dst) {
-    if (dst == 0) return;
-    for (auto &nd : a[hd]) {
-        cout << "header: " << hd+1 << endl;
-        if (it[nd] == 0) {
-            ++it[nd];
-            cout << "node added: " << nd+1 << endl;
-            bfs(nd, dst-1);
-        }
-    }
-}
-
+// bfs
 void func() {
     ll nd, edg, inf, dst;
     // – n (2 ≤ n ≤ E+5 ), the number of nodes in the social graph
@@ -66,18 +51,32 @@ void func() {
     INPUT >> nd >> edg >> inf >> dst;
     //vector<ll> adj[nd];
     //vector<ll> *adj = new vector<ll>[nd];
-    //vector<vector<ll>> adj(nd);
-    //vector<int> it(nd, 0);
-    a.resize(nd);
-    it.resize(nd, 0);
+    vector<vector<ll>> adj(nd);
+    vector<int> it(nd, 0);
     ++it[inf-1];
 
     for (ll i = 0, u, v; i < edg; ++i) {
         INPUT >> u >> v;
-        a[u-1].emplace_back(v-1);
-        a[v-1].emplace_back(u-1);
+        adj[u-1].emplace_back(v-1);
+        adj[v-1].emplace_back(u-1);
     }
-    bfs(inf-1, dst);
+    queue<pair<ll, ll>> q;
+    q.push({inf-1, dst});
+
+    while (!q.empty()) {
+        auto fr = q.front();
+        q.pop();
+
+        if (fr.second) {
+            for (auto &nb : adj[fr.first]) {
+                if (!it[nb]) {
+                    q.push({nb, fr.second-1});
+                    ++it[nb];
+                }
+            }
+        }
+    }
+    
     ll res = 0;
     for (auto &elm : it) if (elm) ++res;
     cout << res << endl;
