@@ -33,13 +33,12 @@ class Graph {
     ll V;
     vector<ll> vals, circle;
     vector<vector<ll>> adj;
-    map<ll, ll> cir_val;
 
 public:
     Graph(ll V) { this->V = V; adj.resize(V); }
-    void addVal(ll val) {vals.emplace_back(val); }
+    void addVal(ll val) { vals.emplace_back(val); }
     void addEdge(ll u, ll v) { adj[u].emplace_back(v); }
-    void rmCircle() {
+    void findCircle() {
         
     }
 };
