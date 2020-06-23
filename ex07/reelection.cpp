@@ -63,7 +63,7 @@ void func() {
     for (ll i = 0, u ,v, w; i < E; ++i) {
         INPUT >> u >> v >> w;
         //edges.emplace_back(w, u, v);
-        edges.insert({w, {u, v}});
+        edges.insert({w, {u-1, v-1}});
     }
     //sort(edges.begin(), edges.end(),
     //     [](const tuple<int, int, int>& a, const tuple<int, int, int>& b) { return get<0>(a) > get<0>(b); });
